@@ -7,8 +7,8 @@ import {Cell} from './Cell'
 export class Grid extends React.Component<{player: number}, {}> {
   
   render() {
-    const columns: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7]
-    const rows: Array<number> = [0, 1, 2, 3, 4, 5, 6]
+    const columns: Array<number> = [1, 2, 3, 4, 5, 6]
+    const rows: Array<number> = [1, 2, 3, 4, 5]
     return (
       <table className='player-grid'>
         <tbody>
