@@ -1,8 +1,4 @@
-export interface Tile {
-  id: number,
-  gem?: number,
-  paths: Array<number>
-}
+import {Tile} from '../interfaces'
 
 export function getTileById(id: number): Tile {
   switch (id) {

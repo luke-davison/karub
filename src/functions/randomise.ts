@@ -1,3 +1,5 @@
+import {StartingPlacement} from '../interfaces'
+
 const numberOfTiles = 36
 const numberOfExplorers = 4
 const numberOfStartingPlaces = 12
@@ -16,13 +18,8 @@ export function randomiseTiles(): Array<number> {
   return randomised
 }
 
-export interface startingPlacement {
-  id: number,
-  degrees: number
-}
-
-export function randomiseStartingPlacements(): {temples: Array<startingPlacement>, explorers: Array<startingPlacement>} {
-  const temples: Array<startingPlacement> = []
+export function randomiseStartingPlacements(): {temples: Array<StartingPlacement>, explorers: Array<StartingPlacement>} {
+  const temples: Array<StartingPlacement> = []
   for (let id = 1; id <= numberOfExplorers; id++) {
     let degrees = newRandomInt()
     while (notAlreadyTaken(temples, degrees)) {
@@ -31,7 +28,7 @@ export function randomiseStartingPlacements(): {temples: Array<startingPlacement
     temples.push({id, degrees})
   }
   
-  const explorers: Array<startingPlacement> = []
+  const explorers: Array<StartingPlacement> = []
   for (let id = 1; id <= numberOfExplorers; id++) {
     let degrees = newRandomInt()
     while (notAlreadyTaken(explorers, degrees) && notTooCloseToTemple(id, degrees)) {
@@ -42,7 +39,7 @@ export function randomiseStartingPlacements(): {temples: Array<startingPlacement
   return {temples, explorers}
 
   
-  function notAlreadyTaken(arr: Array<startingPlacement>, degrees): boolean {
+  function notAlreadyTaken(arr: Array<StartingPlacement>, degrees): boolean {
     return !!arr.find(placement => placement.degrees === degrees)
   }
   function notTooCloseToTemple(id: number, degrees: number): boolean {

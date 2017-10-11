@@ -2,9 +2,10 @@ import * as React from 'react'
 import {observer} from 'mobx-react'
 
 import {Cell} from './Cell'
+import {Player} from '../interfaces'
 
 @observer
-export class PlayerBoard extends React.Component<{player: number}, {}> {
+export class PlayerBoard extends React.Component<{player: Player}, {}> {
   
   render() {
     const columns: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -22,7 +23,7 @@ export class PlayerBoard extends React.Component<{player: number}, {}> {
               return (
                 <div className='middle-row'>
                   {columns.map((column: number) => {
-                    return <Cell player={1} x={column} y={row} />
+                    return <Cell player={this.props.player} x={column} y={row} />
                   })}
                 </div>
               )

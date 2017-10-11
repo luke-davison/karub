@@ -2,9 +2,10 @@ import * as React from 'react'
 import {observer} from 'mobx-react'
 
 import {Cell} from './Cell'
+import {Player} from '../interfaces'
 
 @observer
-export class Grid extends React.Component<{player: number}, {}> {
+export class Grid extends React.Component<{player: Player}, {}> {
   
   render() {
     const columns: Array<number> = [1, 2, 3, 4, 5, 6]
