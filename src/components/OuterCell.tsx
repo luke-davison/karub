@@ -9,7 +9,7 @@ import {appState} from '../AppState'
 export class OuterCell extends React.Component<{player: Player, x: number, y: number}, {}> {
   render() {
     let classNames: string = ''
-    if (this.props.x === 0 || this.props.y === 7) {
+    if (this.props.x === 0 || this.props.x === 7) {
       classNames += ' vertical'
     }
     if (this.props.y === 0 || this.props.y === 6) {

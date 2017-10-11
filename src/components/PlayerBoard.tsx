@@ -23,21 +23,26 @@ export class PlayerBoard extends React.Component<{player: Player}, {}> {
         </div>
         <div className='middle-rows'>
           <div className='left-column'>
+            {rows.map((row: number) => {
+              return <OuterCell player={this.props.player} x={0} y={row} />
+            })}
           </div>
           <div className='middle-columns'>
             {rows.map((row: number) => {
               return (
                 <div className='middle-row'>
-                  <OuterCell player={this.props.player} x={0} y={row} />
+                  
                   {columns.map((column: number) => {
                     return <Cell player={this.props.player} x={column} y={row} />
                   })}
-                  <OuterCell player={this.props.player} x={7} y={row} />
                 </div>
               )
             })}
           </div>
           <div className='right-column'>
+            {rows.map((row: number) => {
+              return <OuterCell player={this.props.player} x={7} y={row} />
+            })}
           </div>
         </div>
         <div className='bottom-row'>

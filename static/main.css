@@ -20,6 +20,16 @@ html, body, #root, #app {
   height: Calc(100% / 12);
 }
 
+.top-row .player-outer-cell, .bottom-row .player-outer-cell{
+  width: Calc(100% / 7);
+  height: 100%;
+}
+
+.top-row .player-outer-cell.vertical, .bottom-row .player-outer-cell.vertical{
+  width: Calc(100% / 14);
+  height: 100%;
+}
+
 .middle-rows {
   display: flex;
   width: 100%;
@@ -29,6 +39,11 @@ html, body, #root, #app {
 .left-column, .right-column {
   width: Calc(100% / 14);
   height: 100%;
+}
+
+.left-column .player-outer-cell, .right-column .player-outer-cell {
+  width: 100%;
+  height: Calc(100% / 5);
 }
 
 .middle-columns {
