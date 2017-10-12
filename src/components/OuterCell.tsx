@@ -15,7 +15,7 @@ export class OuterCell extends React.Component<{player: Player, x: number, y: nu
     if (this.props.y === 0 || this.props.y === 6) {
       classNames += ' horizontal'
     }
-    const adventurer = this.props.player.adventurers.find(adventurer => adventurer.adventurerPosition.x === this.props.x && adventurer.adventurerPosition.y === this.props.y)
+    const adventurer = this.props.player.adventurers.find(adventurer => adventurer.position.x === this.props.x && adventurer.position.y === this.props.y)
     const temple = appState.templePositions.find(temple => temple.x === this.props.x && temple.y === this.props.y)
     return (
       <div className={'player-outer-cell' + classNames}>

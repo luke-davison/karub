@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
+import {CurrentTile} from './components/CurrentTile'
 import {PlayerBoard} from './components/PlayerBoard'
 import {RemainingTiles} from './components/RemainingTiles'
 
@@ -13,7 +14,8 @@ class App extends React.Component<{}, {}> {
     render() {
         return (
             <div id='app'>
-                {appState.players.map((player) => <PlayerBoard key={player.id} player={player}/>)}
+                <CurrentTile />
+                <PlayerBoard player={appState.player}/>
                 <RemainingTiles tiles={appState.remainingTiles}/>
             </div>
             

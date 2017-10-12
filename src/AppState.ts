@@ -1,30 +1,41 @@
 import {observable} from 'mobx'
 
-import {Player, Tile, Placement, TilePlacement} from './interfaces'
-import {dummyPlayerData, dummyAdventurerPositions, dummyTemplePlacements, dummyRemainingTiles, dummyCurrentPlacement} from './dummyData'
+import {Player, Tile, TilePlacement} from './interfaces'
+import {dummyPlayerData, dummyTemplePlacements, dummyRemainingTiles, dummyCurrentPlacement} from './dummyData'
 
 class AppState {
   @observable players: Array<Player>
   @observable remainingTiles: Array<Tile>
-  @observable adventurerStartingPositions: Array<Placement>
-  @observable templePositions: Array<Placement>
+  @observable templePositions: Array<TilePlacement>
   @observable currentPlacement: TilePlacement
+  @observable player: Player
+  @observable movementToggled: boolean
 
   constructor() {
     this.players = dummyPlayerData
     this.remainingTiles = dummyRemainingTiles
-    this.adventurerStartingPositions = dummyAdventurerPositions
     this.templePositions = dummyTemplePlacements
     this.currentPlacement = dummyCurrentPlacement
+    this.player = dummyPlayerData[0]
+    this.movementToggled = false
 
     this.clickCell = this.clickCell.bind(this)
+    this.hoverOverCell = this.hoverOverCell.bind(this)
+    this.toggleMovement = this.toggleMovement.bind(this)
   }
 
   clickCell(x: number, y: number) {
-    this.players[0].tilePlacements.push({tile: this.currentPlacement.tile, x, y})
+    if (!this.player.tilePlacements.find(tilePlacement => tilePlacement.x === x && tilePlacement.y === y)) {
+      this.player.tilePlacements.push({tile: this.currentPlacement.tile, x, y})
+      this.currentPlacement = {tile: this.remainingTiles.pop(), x, y}
+    }
   }
   hoverOverCell(x: number, y: number) {
-    this.currentPlacement = {tile: this.currentPlacement.tile, x, y}
+    this.currentPlacement.x = x
+    this.currentPlacement.y = y
+  }
+  toggleMovement() {
+    this.movementToggled = !this.movementToggled 
   }
 }
 

@@ -1,25 +1,15 @@
-export interface StartingPlacement {
-  id: number
-  degrees: number
-}
-
 export interface Tile {
   id: number
   gem?: number
   paths: Array<number>
 }
 
-export interface Placement {
-  id: number
-  x: number
-  y: number
-}
-
 export interface Adventurers {
   id: number
   gems: Array<number>
-  reward: 0;
-  adventurerPosition: Placement;
+  reward: number
+  position: TilePlacement
+  startingPosition: number
 }
 
 export interface Player {
@@ -29,7 +19,7 @@ export interface Player {
 }
 
 export interface TilePlacement {
-  tile: Tile
+  tile?: Tile
   x: number
   y: number
 }

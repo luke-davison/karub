@@ -1,51 +1,52 @@
-import {Player, Placement, Tile} from './interfaces'
+import {Player, TilePlacement, Tile, Adventurers} from './interfaces'
 import {getTileById} from './functions/tiles'
+import {getStartingAdventurerPlacementByDegrees, getTemplePlacementByDegrees} from './functions/startingPositions'
 
-export const dummyAdventurerPositions: Array<Placement> = [
-  {id: 0, x: 0, y: 1},
-  {id: 1, x: 0, y: 2},
-  {id: 2, x: 0, y: 3},
-  {id: 3, x: 0, y: 4},
-]
+const adventurerPositions = [50, 20, 30, 90]
+const templePositions = [80, 110, 10, 20]
 
 export const dummyPlayerData: Array<Player> = [
   {
     id: 1,
     adventurers: [
       {
-        id: 0,
-        gems: [],
-        reward: 0,
-        adventurerPosition: dummyAdventurerPositions[0]
-      },
-      {
         id: 1,
         gems: [],
         reward: 0,
-        adventurerPosition: dummyAdventurerPositions[1]
+        position: getStartingAdventurerPlacementByDegrees(adventurerPositions[0]),
+        startingPosition: adventurerPositions[0]
       },
       {
         id: 2,
         gems: [],
         reward: 0,
-        adventurerPosition: dummyAdventurerPositions[2]
+        position: getStartingAdventurerPlacementByDegrees(adventurerPositions[1]),
+        startingPosition: adventurerPositions[1]
       },
       {
         id: 3,
         gems: [],
         reward: 0,
-        adventurerPosition: dummyAdventurerPositions[3]
+        position: getStartingAdventurerPlacementByDegrees(adventurerPositions[2]),
+        startingPosition: adventurerPositions[2]
+      },
+      {
+        id: 4,
+        gems: [],
+        reward: 0,
+        position: getStartingAdventurerPlacementByDegrees(adventurerPositions[3]),
+        startingPosition: adventurerPositions[3]
       }
     ],
     tilePlacements: [{tile: getTileById(1), x: 3, y: 4}, {tile: getTileById(2), x: 1, y: 4}, {tile: getTileById(3), x: 1, y: 1}]
   },
 ]
 
-export const dummyTemplePlacements: Array<Placement> = [
-  {id: 0, x: 1, y: 0},
-  {id: 1, x: 2, y: 0},
-  {id: 2, x: 3, y: 0},
-  {id: 3, x: 4, y: 0},
+export const dummyTemplePlacements: Array<TilePlacement> = [
+  getTemplePlacementByDegrees(adventurerPositions[0]),
+  getTemplePlacementByDegrees(adventurerPositions[1]),
+  getTemplePlacementByDegrees(adventurerPositions[2]),
+  getTemplePlacementByDegrees(adventurerPositions[3]),
 ]
 
 export const dummyRemainingTiles: Array<Tile> = [

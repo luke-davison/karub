@@ -1,9 +1,7 @@
-import {StartingPlacement} from '../interfaces'
-
 const numberOfTiles = 36
 const numberOfExplorers = 4
 const numberOfStartingPlaces = 12
-const minDistanceBetweenStartingPlaces = 3
+const minDistanceBetweenStartingPlaces = 30
 
 export function randomiseTiles(): Array<number> {
   const sorted: Array<number> = []
@@ -18,35 +16,35 @@ export function randomiseTiles(): Array<number> {
   return randomised
 }
 
-export function randomiseStartingPlacements(): {temples: Array<StartingPlacement>, explorers: Array<StartingPlacement>} {
-  const temples: Array<StartingPlacement> = []
+export function randomiseStartingPlacements(): {temples: Array<number>, explorers: Array<number>} {
+  const temples: Array<number> = []
   for (let id = 1; id <= numberOfExplorers; id++) {
-    let degrees = newRandomInt()
-    while (notAlreadyTaken(temples, degrees)) {
-      degrees = newRandomInt()
+    let position = newRandomInt()
+    while (notAlreadyTaken(temples, position)) {
+      position = newRandomInt()
     }
-    temples.push({id, degrees})
+    temples.push(position)
   }
   
-  const explorers: Array<StartingPlacement> = []
+  const explorers: Array<number> = []
   for (let id = 1; id <= numberOfExplorers; id++) {
-    let degrees = newRandomInt()
-    while (notAlreadyTaken(explorers, degrees) && notTooCloseToTemple(id, degrees)) {
-      degrees = newRandomInt()
+    let position = newRandomInt()
+    while (notAlreadyTaken(explorers, position) && notTooCloseToTemple(id, position)) {
+      position = newRandomInt()
     }
-    explorers.push({id, degrees})
+    explorers.push(position)
   }
   return {temples, explorers}
 
   
-  function notAlreadyTaken(arr: Array<StartingPlacement>, degrees): boolean {
-    return !!arr.find(placement => placement.degrees === degrees)
+  function notAlreadyTaken(arr: Array<number>, position): boolean {
+    return !!arr.find(placement => placement === position)
   }
-  function notTooCloseToTemple(id: number, degrees: number): boolean {
-    const temple = temples.find(temple => temple.id === id)
-    return degrees + temple.degrees < minDistanceBetweenStartingPlaces || numberOfStartingPlaces * 2 - degrees - temple.degrees < minDistanceBetweenStartingPlaces
+  function notTooCloseToTemple(id: number, position: number): boolean {
+    const temple = temples[id]
+    return position + temple < minDistanceBetweenStartingPlaces || numberOfStartingPlaces * 2 - position - temple < minDistanceBetweenStartingPlaces
   }
   function newRandomInt(): number {
-    return Math.floor(Math.random() * numberOfStartingPlaces)
+    return Math.floor(Math.random() * numberOfStartingPlaces * 10)
   }
 }
