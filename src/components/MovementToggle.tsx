@@ -10,9 +10,16 @@ export class MovementToggle extends React.Component<{}, {}> {
   }
 
   render() {
+    let className = ''
+    if (appState.movementToggled) {
+      className += ' toggled'
+    }
     return (
       <div className='movement-toggle'>
-        <input className='movement-toggle-button' onClick={appState.toggleMovement}/>
+        <button className={'movement-toggle-button' + className} onClick={appState.toggleMovement}>
+          {appState.movementToggled && 'Place a Tile Instead'}
+          {!appState.movementToggled && 'Move an Adventurer Instead'}
+        </button>
       </div>
     )
   }

@@ -6,6 +6,8 @@ import DevTools from 'mobx-react-devtools';
 import {CurrentTile} from './components/CurrentTile'
 import {PlayerBoard} from './components/PlayerBoard'
 import {RemainingTiles} from './components/RemainingTiles'
+import {MovementToggle} from './components/MovementToggle'
+import {ConfirmButton} from './components/ConfirmButton'
 
 import {appState} from './AppState'
 
@@ -15,6 +17,8 @@ class App extends React.Component<{}, {}> {
         return (
             <div id='app'>
                 <CurrentTile />
+                <MovementToggle />
+                <ConfirmButton />
                 <PlayerBoard player={appState.player}/>
                 <RemainingTiles tiles={appState.remainingTiles}/>
             </div>

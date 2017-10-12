@@ -22,6 +22,7 @@ class AppState {
     this.clickCell = this.clickCell.bind(this)
     this.hoverOverCell = this.hoverOverCell.bind(this)
     this.toggleMovement = this.toggleMovement.bind(this)
+    this.confirmTurn = this.confirmTurn.bind(this)
   }
 
   clickCell(x: number, y: number) {
@@ -31,11 +32,16 @@ class AppState {
     }
   }
   hoverOverCell(x: number, y: number) {
-    this.currentPlacement.x = x
-    this.currentPlacement.y = y
+    if (!this.movementToggled) {
+      this.currentPlacement.x = x
+      this.currentPlacement.y = y
+    }
   }
   toggleMovement() {
     this.movementToggled = !this.movementToggled 
+  }
+  confirmTurn() {
+
   }
 }
 
