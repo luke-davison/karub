@@ -13,7 +13,7 @@ class App extends React.Component<{}, {}> {
     render() {
         return (
             <div id='app'>
-                {appState.players.map((player) => <PlayerBoard player={player}/>)}
+                {appState.players.map((player) => <PlayerBoard key={player.id} player={player}/>)}
                 <RemainingTiles tiles={appState.remainingTiles}/>
             </div>
             

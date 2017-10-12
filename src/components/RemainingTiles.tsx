@@ -13,10 +13,10 @@ export class RemainingTiles extends React.Component<{tiles: Array<Tile>}, {}> {
       <div className='remaining-tile-grid'>
         {rows.map((row: number) => {
           return (
-            <div className='remaining-tile-row'>
+            <div key={row} className='remaining-tile-row'>
               {columns.map((column: number) => {
                 return (
-                  <div className='remaining-tile-cell'>
+                  <div key={column} className='remaining-tile-cell'>
                     {this.props.tiles.find((tile: Tile) => tile.id === (row - 1) * columns.length + column) && (
                       <img src={`/static/image/tile${(row - 1) * columns.length + column}.jpeg`} className='remaining-tile-image' />
                     )}

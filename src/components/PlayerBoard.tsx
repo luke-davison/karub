@@ -13,27 +13,26 @@ export class PlayerBoard extends React.Component<{player: Player}, {}> {
     const rows: Array<number> = [1, 2, 3, 4, 5]
 
     return (
-      <div className='player-grid'>
+      <div key={this.props.player.id} className='player-grid'>
         <div className='top-row'>
           <OuterCell player={this.props.player} x={0} y={0} />
           {columns.map((column: number) => {
-            return <OuterCell player={this.props.player} x={column} y={0} />
+            return <OuterCell key={column} player={this.props.player} x={column} y={0} />
           })}
           <OuterCell player={this.props.player} x={7} y={0} />
         </div>
         <div className='middle-rows'>
           <div className='left-column'>
             {rows.map((row: number) => {
-              return <OuterCell player={this.props.player} x={0} y={row} />
+              return <OuterCell key={row} player={this.props.player} x={0} y={row} />
             })}
           </div>
           <div className='middle-columns'>
             {rows.map((row: number) => {
               return (
-                <div className='middle-row'>
-                  
+                <div key={row} className='middle-row'>  
                   {columns.map((column: number) => {
-                    return <Cell player={this.props.player} x={column} y={row} />
+                    return <Cell key={column} player={this.props.player} x={column} y={row} />
                   })}
                 </div>
               )
@@ -41,14 +40,14 @@ export class PlayerBoard extends React.Component<{player: Player}, {}> {
           </div>
           <div className='right-column'>
             {rows.map((row: number) => {
-              return <OuterCell player={this.props.player} x={7} y={row} />
+              return <OuterCell key={row} player={this.props.player} x={7} y={row} />
             })}
           </div>
         </div>
         <div className='bottom-row'>
           <OuterCell player={this.props.player} x={0} y={6} />
           {columns.map((column: number) => {
-            return <OuterCell player={this.props.player} x={column} y={6} />
+            return <OuterCell key={column} player={this.props.player} x={column} y={6} />
           })}
           <OuterCell player={this.props.player} x={7} y={6} />
         </div>

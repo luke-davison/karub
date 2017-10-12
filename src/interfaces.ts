@@ -10,7 +10,7 @@ export interface Tile {
 }
 
 export interface Placement {
-  id?: number
+  id: number
   x: number
   y: number
 }
@@ -25,5 +25,11 @@ export interface Adventurers {
 export interface Player {
   id: number
   adventurers: Array<Adventurers>
-  tilePlacements: Array<Placement>
+  tilePlacements: Array<TilePlacement>
+}
+
+export interface TilePlacement {
+  tile: Tile
+  x: number
+  y: number
 }

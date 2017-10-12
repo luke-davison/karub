@@ -10,7 +10,7 @@ export const dummyAdventurerPositions: Array<Placement> = [
 
 export const dummyPlayerData: Array<Player> = [
   {
-    id: 0,
+    id: 1,
     adventurers: [
       {
         id: 0,
@@ -37,7 +37,7 @@ export const dummyPlayerData: Array<Player> = [
         adventurerPosition: dummyAdventurerPositions[3]
       }
     ],
-    tilePlacements: [{id: 1, x: 3, y: 4}, {id: 2, x: 1, y: 4}, {id: 3, x: 1, y: 1}]
+    tilePlacements: [{tile: getTileById(1), x: 3, y: 4}, {tile: getTileById(2), x: 1, y: 4}, {tile: getTileById(3), x: 1, y: 1}]
   },
 ]
 
@@ -62,7 +62,6 @@ export const dummyRemainingTiles: Array<Tile> = [
   getTileById(14),
   getTileById(15),
   getTileById(16),
-  getTileById(17),
   getTileById(18),
   getTileById(19),
   getTileById(20),
@@ -83,3 +82,5 @@ export const dummyRemainingTiles: Array<Tile> = [
   getTileById(35),
   getTileById(36)
 ]
+
+export const dummyCurrentPlacement = {tile: getTileById(17), x: 0, y: 0}
