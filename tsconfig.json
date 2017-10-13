@@ -6,7 +6,6 @@
     "noImplicitAny": false,
     "removeComments": true,
     "experimentalDecorators": true,
-    "noLib": false,
     "jsx": "react",
     "outDir": "dist"
   },
