@@ -23,5 +23,18 @@
     "mobx-react-devtools": "^4.2.15",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.34",
+    "@types/react": "^16.0.10",
+    "@types/react-dom": "^16.0.1",
+    "awesome-typescript-loader": "^3.2.3",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "typescript": "^2.5.3",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.1"
   }
 }
