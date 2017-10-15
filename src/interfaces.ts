@@ -1,7 +1,7 @@
 export interface Tile {
   id: number
   gem?: number
-  paths: Array<number>
+  paths: Array<string>
 }
 
 export interface Adventurers {
