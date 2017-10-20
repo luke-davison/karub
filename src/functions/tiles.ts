@@ -78,3 +78,12 @@ export function getTileById(id: number): Tile {
       return undefined
   }
 }
+
+export function convertTileStringToArray(str: string): Array<Tile> {
+  const arr: Array<number> = str.split(',').map(num => Number(num))
+  return arr.map(num => getTileById(num))
+}
+
+export function convertTileArrayToString(arr: Array<Tile>): string {
+  return arr.map(tile => tile.id).join(',')
+}

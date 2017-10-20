@@ -23,3 +23,9 @@ export interface TilePlacement {
   x: number
   y: number
 }
+
+export interface Game {
+  temples: string
+  adventurers: string
+  tiles: string
+}
