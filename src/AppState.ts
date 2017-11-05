@@ -1,14 +1,14 @@
 import {observable} from 'mobx'
 
-import {Player, Tile, TilePlacement} from './interfaces'
+import {IPlayer, ITile, ITilePlacement} from './interfaces'
 import {dummyPlayerData, dummyTemplePlacements, dummyRemainingTiles, dummyCurrentPlacement} from './dummyData'
 
 class AppState {
-  @observable players: Array<Player>
-  @observable remainingTiles: Array<Tile>
-  @observable templePositions: Array<TilePlacement>
-  @observable currentPlacement: TilePlacement
-  @observable player: Player
+  @observable players: Array<IPlayer>
+  @observable remainingTiles: Array<ITile>
+  @observable templePositions: Array<ITilePlacement>
+  @observable currentPlacement: ITilePlacement
+  @observable player: IPlayer
   @observable movementToggled: boolean
   @observable tilePlaced: boolean
 

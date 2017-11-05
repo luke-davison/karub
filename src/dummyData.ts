@@ -1,11 +1,11 @@
-import {Player, TilePlacement, Tile, Adventurers} from './interfaces'
+import {IPlayer, ITilePlacement, ITile, IAdventurer} from './interfaces'
 import {getTileById} from './functions/tiles'
 import {getStartingAdventurerPlacementByDegrees, getTemplePlacementByDegrees} from './functions/startingPositions'
 
 const adventurerPositions = [50, 20, 30, 90]
 const templePositions = [80, 110, 10, 20]
 
-export const dummyPlayerData: Array<Player> = [
+export const dummyPlayerData: Array<IPlayer> = [
   {
     id: 1,
     adventurers: [
@@ -42,14 +42,14 @@ export const dummyPlayerData: Array<Player> = [
   },
 ]
 
-export const dummyTemplePlacements: Array<TilePlacement> = [
+export const dummyTemplePlacements: Array<ITilePlacement> = [
   getTemplePlacementByDegrees(adventurerPositions[0]),
   getTemplePlacementByDegrees(adventurerPositions[1]),
   getTemplePlacementByDegrees(adventurerPositions[2]),
   getTemplePlacementByDegrees(adventurerPositions[3]),
 ]
 
-export const dummyRemainingTiles: Array<Tile> = [
+export const dummyRemainingTiles: Array<ITile> = [
   getTileById(4),
   getTileById(5),
   getTileById(6),

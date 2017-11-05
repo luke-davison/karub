@@ -1,30 +1,36 @@
-export interface Tile {
+export interface ITile {
   id: number
   gem?: number
   paths: Array<string>
 }
 
-export interface Adventurers {
+export interface IAdventurer {
   id: number
   gems: Array<number>
   reward: number
-  position: TilePlacement
+  position: ITilePlacement
   startingPosition: number
 }
 
-export interface Player {
+export interface ITemple {
   id: number
-  adventurers: Array<Adventurers>
-  tilePlacements: Array<TilePlacement>
-}
-
-export interface TilePlacement {
-  tile?: Tile
   x: number
   y: number
 }
 
-export interface Game {
+export interface IPlayer {
+  id: number
+  adventurers: Array<IAdventurer>
+  tilePlacements: Array<ITilePlacement>
+}
+
+export interface ITilePlacement {
+  tile?: ITile
+  x: number
+  y: number
+}
+
+export interface IGame {
   temples: string
   adventurers: string
   tiles: string

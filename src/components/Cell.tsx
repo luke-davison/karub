@@ -1,12 +1,12 @@
 import * as React from 'react'
 import {observer} from 'mobx-react'
 
-import {Player} from '../interfaces'
+import {IPlayer} from '../interfaces'
 
 import {appState} from '../AppState'
 
 @observer
-export class Cell extends React.Component<{player: Player, x: number, y: number}, {}> {
+export class Cell extends React.Component<{player: IPlayer, x: number, y: number}, {}> {
   constructor() {
     super()
     this.clickCell = this.clickCell.bind(this)

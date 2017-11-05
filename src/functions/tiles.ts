@@ -1,6 +1,6 @@
-import {Tile} from '../interfaces'
+import {ITile} from '../interfaces'
 
-export function getTileById(id: number): Tile {
+export function getTileById(id: number): ITile {
   switch (id) {
     case 1:
       return {id, paths: ['E', 'W']}

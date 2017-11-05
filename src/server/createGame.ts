@@ -1,8 +1,8 @@
-import {Game} from '../interfaces'
+import {IGame} from '../interfaces'
 
 import {randomiseStartingPlacements, randomiseTiles} from '../functions/randomise'
 
-export function createNewGame(): Game {
+export function createNewGame(): IGame {
   const startingPlacements = randomiseStartingPlacements()
   const tiles = randomiseTiles()
   return {

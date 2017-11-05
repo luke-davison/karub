@@ -1,14 +1,14 @@
-import {TilePlacement} from '../interfaces'
+import {ITilePlacement} from '../interfaces'
 
-export function getPossibleMovements(startingPlacement: TilePlacement, maxDistance: number, tilesPlaced: Array<TilePlacement>, temple: TilePlacement, otherAdventurers: Array<TilePlacement>): Array<TilePlacement> {
-  const possibleMovements: Array<TilePlacement> = [startingPlacement]
-  let unexploredMovements: Array<TilePlacement> = [startingPlacement]
+export function getPossibleMovements(startingPlacement: ITilePlacement, maxDistance: number, tilesPlaced: Array<ITilePlacement>, temple: ITilePlacement, otherAdventurers: Array<ITilePlacement>): Array<ITilePlacement> {
+  const possibleMovements: Array<ITilePlacement> = [startingPlacement]
+  let unexploredMovements: Array<ITilePlacement> = [startingPlacement]
 
   for (let distance: number = 1; distance <= maxDistance; distance += 1 ) {
-    const newPositions: Array<TilePlacement> = []
-    unexploredMovements.forEach((currentPosition: TilePlacement) => {
+    const newPositions: Array<ITilePlacement> = []
+    unexploredMovements.forEach((currentPosition: ITilePlacement) => {
       const nearbyPositions = getNearbyPositions(currentPosition)
-      nearbyPositions.forEach((nearbyPosition: TilePlacement) => {
+      nearbyPositions.forEach((nearbyPosition: ITilePlacement) => {
         if (pathsAreValid(currentPosition, nearbyPosition)) {
           possibleMovements.push(nearbyPosition)
           newPositions.push(nearbyPosition)
@@ -20,8 +20,8 @@ export function getPossibleMovements(startingPlacement: TilePlacement, maxDistan
   
   return possibleMovements
 
-  function getNearbyPositions(currentPosition: TilePlacement): Array<TilePlacement> {
-    const positions: Array<TilePlacement> = []
+  function getNearbyPositions(currentPosition: ITilePlacement): Array<ITilePlacement> {
+    const positions: Array<ITilePlacement> = []
     tilesPlaced.forEach(tile => {
       if (isNearby(tile)) {
         if (!otherAdventurers.find(adventurer => adventurer.x === tile.x && adventurer.y === tile.y)) {
@@ -34,13 +34,13 @@ export function getPossibleMovements(startingPlacement: TilePlacement, maxDistan
     }
     return positions.filter(position => !possibleMovements.find(possibleMovement => position.x === possibleMovement.x && position.y === possibleMovement.y))
 
-    function isNearby(tile: TilePlacement) {
+    function isNearby(tile: ITilePlacement) {
       return ((tile.x === currentPosition.x && Math.abs(tile.y - currentPosition.y) === 1) || (tile.y === currentPosition.y && Math.abs(tile.x - currentPosition.x) === 1))
     }
   }
 }
 
-function pathsAreValid(currentPosition: TilePlacement, nearbyPosition: TilePlacement): boolean {
+function pathsAreValid(currentPosition: ITilePlacement, nearbyPosition: ITilePlacement): boolean {
   if (currentPosition.x > nearbyPosition.x) {
     if ((currentPosition.tile.paths.find(path => path === 'W') && nearbyPosition.x === 0) || (currentPosition.tile.paths.find(path => path === 'W') && nearbyPosition.tile.paths.find(path => path === 'E'))) {
       return true

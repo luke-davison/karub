@@ -3,10 +3,10 @@ import {observer} from 'mobx-react'
 
 import {Cell} from './Cell'
 import {OuterCell} from './OuterCell'
-import {Player} from '../interfaces'
+import {IPlayer} from '../interfaces'
 
 @observer
-export class PlayerBoard extends React.Component<{player: Player}, {}> {
+export class PlayerBoard extends React.Component<{player: IPlayer}, {}> {
   
   render() {
     const columns: Array<number> = [1, 2, 3, 4, 5, 6]

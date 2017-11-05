@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {observer} from 'mobx-react'
 
-import {Tile} from '../interfaces'
+import {ITile} from '../interfaces'
 import {getTileAsset} from '../functions/assets'
 
 @observer

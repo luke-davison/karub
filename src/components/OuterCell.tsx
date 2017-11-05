@@ -1,12 +1,15 @@
 import * as React from 'react'
 import {observer} from 'mobx-react'
 
-import {Player} from '../interfaces'
+import {IPlayer} from '../interfaces'
+
+import {Adventurer} from './Adventurer'
+import {Temple} from './Temple'
 
 import {appState} from '../AppState'
 
 @observer
-export class OuterCell extends React.Component<{player: Player, x: number, y: number}, {}> {
+export class OuterCell extends React.Component<{player: IPlayer, x: number, y: number}, {}> {
   render() {
     let classNames: string = ''
     if (this.props.x === 0 || this.props.x === 7) {
@@ -19,8 +22,8 @@ export class OuterCell extends React.Component<{player: Player, x: number, y: nu
     const temple = appState.templePositions.find(temple => temple.x === this.props.x && temple.y === this.props.y)
     return (
       <div className={'player-outer-cell' + classNames}>
-        {adventurer && <img src={`/static/image/templeorange.png`} className='adventurer-image' />}
-        {temple && <img src={`/static/image/templeorange.png`} className='temple-image' />}
+        {adventurer && <Adventurer adventurer={adventurer} />}
+        {temple && <Temple temple={temple} />}
       </div>
     )
   }
