@@ -1,6 +1,8 @@
 import * as React from 'react'
 import {observer} from 'mobx-react'
 
+import {getTileAsset} from '../functions/assets'
+
 import {appState} from '../AppState'
 
 @observer
@@ -8,7 +10,7 @@ export class CurrentTile extends React.Component<{}, {}> {
   render() {
     return (
       <div className='current-tile'>
-        <img src={`/static/image/tile${appState.currentPlacement.tile.id}.jpeg`} className='tile-image' />
+        <img src={getTileAsset(appState.currentPlacement.tile.id)} className='tile-image' />
       </div>
     )
   }

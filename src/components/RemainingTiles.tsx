@@ -2,6 +2,7 @@ import * as React from 'react'
 import {observer} from 'mobx-react'
 
 import {Tile} from '../interfaces'
+import {getTileAsset} from '../functions/assets'
 
 @observer
 export class RemainingTiles extends React.Component<{tiles: Array<Tile>}, {}> {
@@ -18,7 +19,7 @@ export class RemainingTiles extends React.Component<{tiles: Array<Tile>}, {}> {
                 return (
                   <div key={column} className='remaining-tile-cell'>
                     {this.props.tiles.find((tile: Tile) => tile.id === (row - 1) * columns.length + column) && (
-                      <img src={`/static/image/tile${(row - 1) * columns.length + column}.jpeg`} className='remaining-tile-image' />
+                      <img src={getTileAsset((row - 1) * columns.length + column)} className='remaining-tile-image' />
                     )}
                   </div>
                 )
