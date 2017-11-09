@@ -5,7 +5,7 @@ import {ITile} from '../interfaces'
 import {getTileAsset} from '../functions/assets'
 
 @observer
-export class RemainingTiles extends React.Component<{tiles: Array<Tile>}, {}> {
+export class RemainingTiles extends React.Component<{tiles: Array<ITile>}, {}> {
   
   render() {
     const rows: Array<number> = [1, 2, 3, 4, 5, 6]
@@ -18,7 +18,7 @@ export class RemainingTiles extends React.Component<{tiles: Array<Tile>}, {}> {
               {columns.map((column: number) => {
                 return (
                   <div key={column} className='remaining-tile-cell'>
-                    {this.props.tiles.find((tile: Tile) => tile.id === (row - 1) * columns.length + column) && (
+                    {this.props.tiles.find((tile: ITile) => tile.id === (row - 1) * columns.length + column) && (
                       <img src={getTileAsset((row - 1) * columns.length + column)} className='remaining-tile-image' />
                     )}
                   </div>
