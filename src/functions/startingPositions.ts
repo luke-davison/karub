@@ -1,6 +1,6 @@
-import {ITilePlacement} from '../interfaces'
+import {IPosition} from '../interfaces'
 
-export function getStartingAdventurerPlacementByDegrees(degrees: number): ITilePlacement {
+export function getStartingAdventurerPlacementByDegrees(degrees: number): IPosition {
   switch (degrees) {
     case 10: return {x: 0, y: 1}
     case 20: return {x: 0, y: 2}
@@ -17,7 +17,7 @@ export function getStartingAdventurerPlacementByDegrees(degrees: number): ITileP
   }
 }
 
-export function getTemplePlacementByDegrees(degrees: number): ITilePlacement {
+export function getTemplePlacementByDegrees(degrees: number): IPosition {
   switch (degrees) {
     case 10: return {x: 1, y: 0}
     case 20: return {x: 2, y: 0}

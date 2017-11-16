@@ -10,7 +10,7 @@ export class CurrentTile extends React.Component<{}, {}> {
   render() {
     return (
       <div className='current-tile'>
-        <img src={getTileAsset(appState.currentPlacement.tile.id)} className='tile-image' />
+        <img src={getTileAsset(appState.currentTile.id)} className='tile-image' />
       </div>
     )
   }

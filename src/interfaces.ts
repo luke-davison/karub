@@ -2,31 +2,30 @@ export interface ITile {
   id: number
   gem?: number
   paths: Array<string>
+  position?: IPosition
 }
 
 export interface IAdventurer {
   id: number
   gems: Array<number>
   reward: number
-  position: ITilePlacement
+  position: IPosition
   startingPosition: number
 }
 
 export interface ITemple {
   id: number
-  x: number
-  y: number
+  position: IPosition
 }
 
 export interface IPlayer {
   id: number
   adventurers: Array<IAdventurer>
-  tilePlacements: Array<ITilePlacement>
+  tiles: Array<ITile>
   temples: Array<ITemple>
 }
 
-export interface ITilePlacement {
-  tile?: ITile
+export interface IPosition {
   x: number
   y: number
 }

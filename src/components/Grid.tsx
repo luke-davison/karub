@@ -19,7 +19,7 @@ export class Grid extends React.Component<{player: IPlayer}, {}> {
                 {columns.map((column: number) => {
                   return (
                     <td className={`player-row row-${row} column-${column}`}>
-                      <Cell player={this.props.player} x={column} y={row} />
+                      <Cell tile={this.props.player.tiles.find(tile => tile.position.x === column && tile.position.y === row)} x={column} y={row} />
                     </td>
                     )
                 })}

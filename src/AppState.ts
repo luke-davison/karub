@@ -1,13 +1,12 @@
 import {observable} from 'mobx'
 
-import {IPlayer, ITile, ITilePlacement} from './interfaces'
-import {dummyPlayerData, dummyTemplePlacements, dummyRemainingTiles, dummyCurrentPlacement} from './dummyData'
+import {IPlayer, ITile, IPosition} from './interfaces'
+import {dummyPlayerData, dummyTemplePlacements, dummyRemainingTiles, dummyCurrentTile} from './dummyData'
 
 class AppState {
   @observable players: Array<IPlayer>
   @observable remainingTiles: Array<ITile>
-  @observable templePositions: Array<ITilePlacement>
-  @observable currentPlacement: ITilePlacement
+  @observable currentTile: ITile
   @observable player: IPlayer
   @observable movementToggled: boolean
   @observable tilePlaced: boolean
@@ -15,8 +14,7 @@ class AppState {
   constructor() {
     this.players = dummyPlayerData
     this.remainingTiles = dummyRemainingTiles
-    this.templePositions = dummyTemplePlacements
-    this.currentPlacement = dummyCurrentPlacement
+    this.currentTile = dummyCurrentTile
     this.player = dummyPlayerData[0]
 
     this.tilePlaced = false
@@ -30,26 +28,26 @@ class AppState {
   }
 
   clickCell(x: number, y: number) {
-    if (this.tilePlaced && this.currentPlacement.x === x && this.currentPlacement.y === y) {
+    if (this.tilePlaced && this.currentTile.position.x === x && this.currentTile.position.y === y) {
       this.tilePlaced = false
     } else {
-      if (!this.player.tilePlacements.find(tilePlacement => tilePlacement.x === x && tilePlacement.y === y)) {
-        this.currentPlacement.x = x
-        this.currentPlacement.y = y
+      if (!this.player.tiles.find(tile => tile.position.x === x && tile.position.y === y)) {
+        this.currentTile.position.x = x
+        this.currentTile.position.y = y
         this.tilePlaced = true
       }
     }
   }
   hoverOverCell(x: number, y: number) {
     if (!this.movementToggled && !this.tilePlaced) {
-      this.currentPlacement.x = x
-      this.currentPlacement.y = y
+      this.currentTile.position.x = x
+      this.currentTile.position.y = y
     }
   }
   leaveCell(x: number, y: number) {
-    if (!this.tilePlaced && this.currentPlacement.x === x && this.currentPlacement.y === y) {
-      this.currentPlacement.x = 0
-      this.currentPlacement.y = 0
+    if (!this.tilePlaced && this.currentTile.position.x === x && this.currentTile.position.y === y) {
+      this.currentTile.position.x = 0
+      this.currentTile.position.y = 0
     }
   }
   toggleMovement() {
@@ -57,8 +55,6 @@ class AppState {
   }
   confirmTurn() {
     if (this.tilePlaced) {
-      this.player.tilePlacements.push({tile: this.currentPlacement.tile, x: this.currentPlacement.x, y: this.currentPlacement.y})
-      this.currentPlacement = {tile: this.remainingTiles.pop(), x: 0, y: 0}
       this.tilePlaced = false
     }
   }

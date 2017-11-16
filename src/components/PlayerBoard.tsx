@@ -32,7 +32,7 @@ export class PlayerBoard extends React.Component<{player: IPlayer}, {}> {
               return (
                 <div key={row} className='middle-row'>  
                   {columns.map((column: number) => {
-                    return <Cell key={column} player={this.props.player} x={column} y={row} />
+                    return <Cell key={column} x={column} y={row} />
                   })}
                 </div>
               )

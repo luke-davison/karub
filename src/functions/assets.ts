@@ -12,12 +12,11 @@ export function getTempleAsset(num: number): string {
   return assetPath + 'temple' + getColorFromNumber(num) + '.png'
 }
 
-export function getDiamondAsset(): string {
-  return assetPath + 'diamond.png'
-}
-
-export function getGoldAsset(): string {
-  return assetPath + 'gold.png'
+export function getGemAsset(num: number): string {
+  switch (num) {
+    case 1: return assetPath + 'diamond.png'
+    case 2: return assetPath + 'gold.png'
+  }
 }
 
 function getColorFromNumber(num: number) {

@@ -1,11 +1,11 @@
-import {IPlayer, ITilePlacement, ITile, IAdventurer} from './interfaces'
+import {IPlayer, IPosition, ITile, IAdventurer} from './interfaces'
 import {getTileById} from './functions/tiles'
 import {getStartingAdventurerPlacementByDegrees, getTemplePlacementByDegrees} from './functions/startingPositions'
 
 const adventurerPositions = [50, 20, 30, 90]
 const templePositions = [80, 110, 10, 20]
 
-export const dummyTemplePlacements: Array<ITilePlacement> = [
+export const dummyTemplePlacements: Array<IPosition> = [
   getTemplePlacementByDegrees(adventurerPositions[0]),
   getTemplePlacementByDegrees(adventurerPositions[1]),
   getTemplePlacementByDegrees(adventurerPositions[2]),
@@ -45,12 +45,12 @@ export const dummyPlayerData: Array<IPlayer> = [
         startingPosition: adventurerPositions[3]
       }
     ],
-    tilePlacements: [{tile: getTileById(1), x: 3, y: 4}, {tile: getTileById(2), x: 1, y: 4}, {tile: getTileById(3), x: 1, y: 1}],
+    tiles: [],
     temples: [
-      {id: 1, x: dummyTemplePlacements[0].x, y: dummyTemplePlacements[0].y},
-      {id: 2, x: dummyTemplePlacements[1].x, y: dummyTemplePlacements[1].y},
-      {id: 3, x: dummyTemplePlacements[2].x, y: dummyTemplePlacements[2].y},
-      {id: 4, x: dummyTemplePlacements[3].x, y: dummyTemplePlacements[3].y},
+      {id: 1, position: dummyTemplePlacements[0]},
+      {id: 2, position: dummyTemplePlacements[1]},
+      {id: 3, position: dummyTemplePlacements[2]},
+      {id: 4, position: dummyTemplePlacements[3]}
     ]
   }
 ]
@@ -92,4 +92,5 @@ export const dummyRemainingTiles: Array<ITile> = [
   getTileById(36)
 ]
 
-export const dummyCurrentPlacement = {tile: getTileById(17), x: 0, y: 0}
+export const dummyCurrentTile = getTileById(17)
+dummyCurrentTile.position = {x: 0, y: 0}

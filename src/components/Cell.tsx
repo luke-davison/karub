@@ -1,12 +1,13 @@
 import * as React from 'react'
 import {observer} from 'mobx-react'
 
-import {IPlayer} from '../interfaces'
+import {ITile} from '../interfaces'
+import {PlacedTile} from './PlacedTile'
 
 import {appState} from '../AppState'
 
 @observer
-export class Cell extends React.Component<{player: IPlayer, x: number, y: number}, {}> {
+export class Cell extends React.Component<{tile?: ITile, x: number, y: number}, {}> {
   constructor() {
     super()
     this.clickCell = this.clickCell.bind(this)
@@ -24,19 +25,16 @@ export class Cell extends React.Component<{player: IPlayer, x: number, y: number
   }
 
   render() {
-    const placement = this.props.player.tilePlacements.find((tile) => tile.x === this.props.x && tile.y === this.props.y)
-    const proposedPlacement = !placement && appState.currentPlacement.x === this.props.x && appState.currentPlacement.y === this.props.y
+    const proposedPlacement = !this.props.tile && appState.currentTile.position.x === this.props.x && appState.currentTile.position.y === this.props.y
     let proposedClassName = ''
     if (proposedPlacement) {
       proposedClassName += ' darken'
     }
     return (
       <div className={'player-cell' + proposedClassName}>
-        {this.props.player.id === 1 && (
-          <button className='cell-button' onClick={this.clickCell} onMouseEnter={this.hoverOverCell} onMouseLeave={this.leaveCell}/>
-        )}
-        {placement && <img src={`/static/image/tile${placement.tile.id}.jpeg`} className='tile-image' />}
-        {proposedPlacement && <img src={`/static/image/tile${appState.currentPlacement.tile.id}.jpeg`} className='proposed-tile' />}
+        <button className='cell-button' onClick={this.clickCell} onMouseEnter={this.hoverOverCell} onMouseLeave={this.leaveCell}/>
+        {this.props.tile && <PlacedTile tile={this.props.tile}/>}
+        {proposedPlacement && <img src={`/static/image/tile${appState.currentTile.id}.jpeg`} className='proposed-tile' />}
       </div>
     )
   }
