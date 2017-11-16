@@ -22,6 +22,7 @@ export interface IPlayer {
   id: number
   adventurers: Array<IAdventurer>
   tilePlacements: Array<ITilePlacement>
+  temples: Array<ITemple>
 }
 
 export interface ITilePlacement {

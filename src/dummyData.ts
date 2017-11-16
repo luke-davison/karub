@@ -5,6 +5,13 @@ import {getStartingAdventurerPlacementByDegrees, getTemplePlacementByDegrees} fr
 const adventurerPositions = [50, 20, 30, 90]
 const templePositions = [80, 110, 10, 20]
 
+export const dummyTemplePlacements: Array<ITilePlacement> = [
+  getTemplePlacementByDegrees(adventurerPositions[0]),
+  getTemplePlacementByDegrees(adventurerPositions[1]),
+  getTemplePlacementByDegrees(adventurerPositions[2]),
+  getTemplePlacementByDegrees(adventurerPositions[3]),
+]
+
 export const dummyPlayerData: Array<IPlayer> = [
   {
     id: 1,
@@ -38,16 +45,17 @@ export const dummyPlayerData: Array<IPlayer> = [
         startingPosition: adventurerPositions[3]
       }
     ],
-    tilePlacements: [{tile: getTileById(1), x: 3, y: 4}, {tile: getTileById(2), x: 1, y: 4}, {tile: getTileById(3), x: 1, y: 1}]
-  },
+    tilePlacements: [{tile: getTileById(1), x: 3, y: 4}, {tile: getTileById(2), x: 1, y: 4}, {tile: getTileById(3), x: 1, y: 1}],
+    temples: [
+      {id: 0, x: dummyTemplePlacements[0].x, y: dummyTemplePlacements[0].y},
+      {id: 1, x: dummyTemplePlacements[1].x, y: dummyTemplePlacements[1].y},
+      {id: 2, x: dummyTemplePlacements[2].x, y: dummyTemplePlacements[2].y},
+      {id: 3, x: dummyTemplePlacements[3].x, y: dummyTemplePlacements[3].y},
+    ]
+  }
 ]
 
-export const dummyTemplePlacements: Array<ITilePlacement> = [
-  getTemplePlacementByDegrees(adventurerPositions[0]),
-  getTemplePlacementByDegrees(adventurerPositions[1]),
-  getTemplePlacementByDegrees(adventurerPositions[2]),
-  getTemplePlacementByDegrees(adventurerPositions[3]),
-]
+
 
 export const dummyRemainingTiles: Array<ITile> = [
   getTileById(4),

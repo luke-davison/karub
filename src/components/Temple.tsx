@@ -2,10 +2,10 @@ import * as React from 'react'
 import {observer} from 'mobx-react'
 
 import {getTempleAsset} from '../functions/assets'
-import {ITile} from '../interfaces'
+import {ITemple} from '../interfaces'
 
 @observer
-export class Temple extends React.Component<{temple: ITile}, {}> {
+export class Temple extends React.Component<{temple: ITemple}, {}> {
   render() {
     return (
       <div className='temple'>
