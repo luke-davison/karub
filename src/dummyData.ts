@@ -47,10 +47,10 @@ export const dummyPlayerData: Array<IPlayer> = [
     ],
     tilePlacements: [{tile: getTileById(1), x: 3, y: 4}, {tile: getTileById(2), x: 1, y: 4}, {tile: getTileById(3), x: 1, y: 1}],
     temples: [
-      {id: 0, x: dummyTemplePlacements[0].x, y: dummyTemplePlacements[0].y},
-      {id: 1, x: dummyTemplePlacements[1].x, y: dummyTemplePlacements[1].y},
-      {id: 2, x: dummyTemplePlacements[2].x, y: dummyTemplePlacements[2].y},
-      {id: 3, x: dummyTemplePlacements[3].x, y: dummyTemplePlacements[3].y},
+      {id: 1, x: dummyTemplePlacements[0].x, y: dummyTemplePlacements[0].y},
+      {id: 2, x: dummyTemplePlacements[1].x, y: dummyTemplePlacements[1].y},
+      {id: 3, x: dummyTemplePlacements[2].x, y: dummyTemplePlacements[2].y},
+      {id: 4, x: dummyTemplePlacements[3].x, y: dummyTemplePlacements[3].y},
     ]
   }
 ]
